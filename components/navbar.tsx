@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X, Sun, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -55,10 +56,11 @@ export function Navbar() {
           <Link href="/" className="flex items-center gap-3 group">
             <div
               className={`relative p-2.5 rounded-xl transition-all duration-300 ${
-                isScrolled ? "bg-accent" : "bg-accent/90"
+                isScrolled ? "" : ""
               } group-hover:scale-110 group-hover:rotate-12`}
             >
-              <Sun className="h-6 w-6 text-accent-foreground transition-transform group-hover:rotate-180 duration-500" />
+              {/* <Sun className="h-6 w-6 text-accent-foreground transition-transform group-hover:rotate-180 duration-500" /> */}
+              <Image src="/Logo.jpeg" alt="SunnyVolt Logo" width={65} height={65} className="rounded" />
               <div className="absolute inset-0 rounded-xl bg-accent animate-ping opacity-0 group-hover:opacity-30" />
             </div>
             <div className="flex flex-col">

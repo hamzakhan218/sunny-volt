@@ -8,7 +8,7 @@ const contactInfo = [
   { icon: Phone, label: "Call Us", value: "+92 305 9865325", href: "tel:+923059865325" },
   { icon: MessageCircle, label: "WhatsApp", value: "+92 305 9865325", href: "https://wa.me/923059865325" },
   { icon: Mail, label: "Email", value: "sunnyvolt17@gmail.com", href: "mailto:sunnyvolt17@gmail.com" },
-  { icon: MapPin, label: "Location", value: "B-17 Faisal Hills Taxila", href: "#" },
+  { icon: MapPin, label: "Location", value: "Office#8 Lower ground Square plaza gate no 1 B17 Islamabad", href: "#" },
 ]
 
 export function ContactSection() {

@@ -5,6 +5,7 @@ import React from "react"
 import { useState } from "react"
 import Link from "next/link"
 import { Sun, MapPin, Phone, Mail, ArrowUp, Send, Facebook, Instagram, Twitter, Linkedin } from "lucide-react"
+import Image from "next/image"
 
 const footerLinks = {
   services: [
@@ -100,8 +101,9 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link href="/" className="group inline-flex items-center gap-3 mb-6">
-              <div className="p-2.5 rounded-xl bg-accent group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-                <Sun className="h-6 w-6 text-accent-foreground transition-transform group-hover:rotate-180 duration-500" />
+              <div className="p-2.5 rounded-xl group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
+                <Image src="/Logo.jpeg" alt="SunnyVolt Logo" width={56} height={56} className="rounded" />
+                {/* <Sun className="h-6 w-6 text-accent-foreground transition-transform group-hover:rotate-180 duration-500" /> */}
               </div>
               <div>
                 <span className="text-xl font-bold block">SunnyVolt</span>
@@ -180,7 +182,7 @@ export function Footer() {
                   <div className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
                     <MapPin className="w-5 h-5 text-accent" />
                   </div>
-                  <span className="pt-2">B-17 Faisal Hills Taxila</span>
+                  <span className="pt-2">Office#8 Lower ground Square plaza gate no 1 B17 Islamabad</span>
                 </a>
               </li>
               <li>

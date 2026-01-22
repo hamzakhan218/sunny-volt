@@ -180,7 +180,7 @@ export function HeroSection() {
               </span>
               <div className="absolute inset-0 bg-gradient-to-r from-accent via-amber-400 to-accent bg-[length:200%_100%] animate-gradient opacity-0 group-hover:opacity-100 transition-opacity" />
             </Link>
-            <Link
+            {/* <Link
               href="#services"
               className="group inline-flex items-center justify-center gap-3 glass text-primary-foreground px-8 py-4 rounded-full font-semibold text-lg transition-all hover:bg-white/20 hover:scale-105"
             >
@@ -188,7 +188,7 @@ export function HeroSection() {
                 <Play className="w-4 h-4 ml-0.5 text-primary-foreground" />
               </div>
               Watch Video
-            </Link>
+            </Link> */}
           </div>
 
           {/* Stats with animated counters */}
