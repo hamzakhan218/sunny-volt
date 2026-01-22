@@ -1,62 +1,95 @@
-"use client"
+"use client";
 
-import React from "react"
-import { useEffect, useRef, useState } from "react"
-import { Phone, MessageCircle, Mail, MapPin, Send, CheckCircle, Sparkles } from "lucide-react"
+import React from "react";
+import { useEffect, useRef, useState } from "react";
+import {
+  Phone,
+  MessageCircle,
+  Mail,
+  MapPin,
+  Send,
+  CheckCircle,
+  Sparkles,
+} from "lucide-react";
 
 const contactInfo = [
-  { icon: Phone, label: "Call Us", value: "+92 305 9865325", href: "tel:+923059865325" },
-  { icon: MessageCircle, label: "WhatsApp", value: "+92 305 9865325", href: "https://wa.me/923059865325" },
-  { icon: Mail, label: "Email", value: "sunnyvolt17@gmail.com", href: "mailto:sunnyvolt17@gmail.com" },
-  { icon: MapPin, label: "Location", value: "Office#8 Lower ground Square plaza gate no 1 B17 Islamabad", href: "#" },
-]
+  {
+    icon: Phone,
+    label: "Call Us",
+    value: "+92 305 9865325",
+    href: "tel:+923059865325",
+  },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: "+92 305 9865325",
+    href: "https://wa.me/923059865325",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "sunnyvolt17@gmail.com",
+    href: "mailto:sunnyvolt17@gmail.com",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "Office#8 Lower ground Square plaza gate no 1 B17 Islamabad",
+    href: "#",
+  },
+];
 
 export function ContactSection() {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "Residential Inquiry",
     message: "",
-  })
-  const [focusedField, setFocusedField] = useState<string | null>(null)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
+  });
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true)
+          setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
-    )
+      { threshold: 0.1 },
+    );
 
     if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect()
-  }, [])
+    return () => observer.disconnect();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    
+    e.preventDefault();
+    setIsSubmitting(true);
+
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-    
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+
     // Reset after showing success
     setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({ name: "", email: "", subject: "Residential Inquiry", message: "" })
-    }, 3000)
-  }
+      setIsSubmitted(false);
+      setFormData({
+        name: "",
+        email: "",
+        subject: "Residential Inquiry",
+        message: "",
+      });
+    }, 3000);
+  };
 
   return (
     <section
@@ -85,7 +118,8 @@ export function ContactSection() {
             Ready to Go <span className="gradient-text">Solar</span>?
           </h2>
           <p className="mt-4 text-muted-foreground text-lg max-w-2xl mx-auto">
-            Take the first step towards energy independence. Our experts are here to help.
+            Take the first step towards energy independence. Our experts are
+            here to help.
           </p>
         </div>
 
@@ -119,18 +153,27 @@ export function ContactSection() {
                       key={item.label}
                       href={item.href}
                       className={`group flex items-center gap-4 p-4 rounded-2xl bg-primary-foreground/5 hover:bg-primary-foreground/10 transition-all duration-500 ${
-                        isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"
+                        isVisible
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 -translate-x-8"
                       }`}
                       style={{ transitionDelay: `${300 + index * 100}ms` }}
                     >
-                      <div className="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
+                      <div className="w-12 h-12 shrink-0 bg-accent/20 rounded-xl flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
                         <item.icon className="w-5 h-5 text-accent group-hover:text-accent-foreground transition-colors" />
                       </div>
-                      <div>
+                      <div className="min-w-0">
                         <p className="text-primary-foreground/60 text-sm">
                           {item.label}
                         </p>
-                        <p className="font-semibold group-hover:text-accent transition-colors">{item.value}</p>
+                        <p
+  className={`font-semibold group-hover:text-accent transition-colors ${
+    item.breakAll ? "break-all" : "break-words"
+  }`}
+>
+  {item.value}
+</p>
+
                       </div>
                     </a>
                   ))}
@@ -141,14 +184,22 @@ export function ContactSection() {
             {/* Form Side */}
             <form onSubmit={handleSubmit} className="p-8 md:p-12 relative">
               {/* Success overlay */}
-              <div className={`absolute inset-0 bg-card flex flex-col items-center justify-center z-20 transition-all duration-500 ${
-                isSubmitted ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
-              }`}>
+              <div
+                className={`absolute inset-0 bg-card flex flex-col items-center justify-center z-20 transition-all duration-500 ${
+                  isSubmitted
+                    ? "opacity-100 pointer-events-auto"
+                    : "opacity-0 pointer-events-none"
+                }`}
+              >
                 <div className="w-20 h-20 bg-emerald-500/10 rounded-full flex items-center justify-center mb-6 animate-bounce-subtle">
                   <CheckCircle className="w-10 h-10 text-emerald-500" />
                 </div>
-                <h4 className="text-2xl font-bold text-foreground mb-2">Message Sent!</h4>
-                <p className="text-muted-foreground">We will get back to you shortly.</p>
+                <h4 className="text-2xl font-bold text-foreground mb-2">
+                  Message Sent!
+                </h4>
+                <p className="text-muted-foreground">
+                  We will get back to you shortly.
+                </p>
               </div>
 
               <div className="space-y-6">
@@ -167,7 +218,9 @@ export function ContactSection() {
                     type="text"
                     id="name"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     onFocus={() => setFocusedField("name")}
                     onBlur={() => setFocusedField(null)}
                     className="w-full px-4 py-3.5 rounded-xl border-2 border-border bg-background focus:border-accent outline-none transition-all duration-300"
@@ -190,7 +243,9 @@ export function ContactSection() {
                     type="email"
                     id="email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     onFocus={() => setFocusedField("email")}
                     onBlur={() => setFocusedField(null)}
                     className="w-full px-4 py-3.5 rounded-xl border-2 border-border bg-background focus:border-accent outline-none transition-all duration-300"
@@ -209,7 +264,9 @@ export function ContactSection() {
                     <select
                       id="subject"
                       value={formData.subject}
-                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, subject: e.target.value })
+                      }
                       className="w-full px-4 py-3.5 rounded-xl border-2 border-border bg-background focus:border-accent outline-none transition-all duration-300 appearance-none cursor-pointer"
                     >
                       <option>Residential Inquiry</option>
@@ -218,8 +275,18 @@ export function ContactSection() {
                       <option>General Question</option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <svg className="w-5 h-5 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      <svg
+                        className="w-5 h-5 text-muted-foreground"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -240,7 +307,9 @@ export function ContactSection() {
                     id="message"
                     rows={4}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     onFocus={() => setFocusedField("message")}
                     onBlur={() => setFocusedField(null)}
                     className="w-full px-4 py-3.5 rounded-xl border-2 border-border bg-background focus:border-accent outline-none transition-all duration-300 resize-none"
@@ -274,5 +343,5 @@ export function ContactSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
