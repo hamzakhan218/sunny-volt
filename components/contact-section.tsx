@@ -30,6 +30,7 @@ const contactInfo = [
     label: "Email",
     value: "sunnyvolt17@gmail.com",
     href: "mailto:sunnyvolt17@gmail.com",
+    breakAll: true,
   },
   {
     icon: MapPin,
@@ -167,13 +168,12 @@ export function ContactSection() {
                           {item.label}
                         </p>
                         <p
-  className={`font-semibold group-hover:text-accent transition-colors ${
-    item.breakAll ? "break-all" : "break-words"
-  }`}
->
-  {item.value}
-</p>
-
+                          className={`font-semibold group-hover:text-accent transition-colors ${
+                            item.breakAll ? "break-all" : "break-words"
+                          }`}
+                        >
+                          {item.value}
+                        </p>
                       </div>
                     </a>
                   ))}
