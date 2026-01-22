@@ -1,11 +1,22 @@
-"use client"
+"use client";
 
-import React from "react"
+import React from "react";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Sun, MapPin, Phone, Mail, ArrowUp, Send, Facebook, Instagram, Twitter, Linkedin } from "lucide-react"
-import Image from "next/image"
+import { useState } from "react";
+import Link from "next/link";
+import {
+  Sun,
+  MapPin,
+  Phone,
+  Mail,
+  ArrowUp,
+  Send,
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
+import Image from "next/image";
 
 const footerLinks = {
   services: [
@@ -20,31 +31,42 @@ const footerLinks = {
     { name: "Warranty Info", href: "#" },
     { name: "FAQs", href: "#" },
   ],
-}
+};
 
 const socialLinks = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-]
+  {
+    icon: Facebook,
+    href: "https://www.facebook.com/share/1KR1kGwJMb/?mibextid=wwXIfr",
+    label: "Facebook",
+  },
+  {
+    icon: Instagram,
+    href: "https://www.instagram.com/sunnyvolt6?igsh=ZmoxZ3l3ZjIyMjQy&utm_source=qr",
+    label: "Instagram",
+  },
+  {
+    icon: Linkedin,
+    href: "https://www.linkedin.com/in/sunny-volt-9573853a6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+    label: "LinkedIn",
+  },
+];
 
 export function Footer() {
-  const [email, setEmail] = useState("")
-  const [isSubscribed, setIsSubscribed] = useState(false)
+  const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (email) {
-      setIsSubscribed(true)
-      setEmail("")
-      setTimeout(() => setIsSubscribed(false), 3000)
+      setIsSubscribed(true);
+      setEmail("");
+      setTimeout(() => setIsSubscribed(false), 3000);
     }
-  }
+  };
 
   return (
     <footer className="bg-primary text-primary-foreground relative overflow-hidden">
@@ -100,21 +122,32 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="group inline-flex items-center gap-3 mb-6">
+            <Link
+              href="/"
+              className="group inline-flex items-center gap-3 mb-6"
+            >
               <div className="p-2.5 rounded-xl group-hover:scale-110 group-hover:rotate-12 transition-transform duration-300">
-                <Image src="/Logo.jpeg" alt="SunnyVolt Logo" width={56} height={56} className="rounded" />
+                <Image
+                  src="/Logo.jpeg"
+                  alt="SunnyVolt Logo"
+                  width={56}
+                  height={56}
+                  className="rounded"
+                />
                 {/* <Sun className="h-6 w-6 text-accent-foreground transition-transform group-hover:rotate-180 duration-500" /> */}
               </div>
               <div>
                 <span className="text-xl font-bold block">SunnyVolt</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">Solar Energy</span>
+                <span className="text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">
+                  Solar Energy
+                </span>
               </div>
             </Link>
             <p className="text-primary-foreground/70 leading-relaxed mb-6">
               Powering a Brighter Tomorrow with affordable, reliable, and
               sustainable solar energy solutions.
             </p>
-            
+
             {/* Social Links */}
             <div className="flex gap-3">
               {socialLinks.map((social) => (
@@ -178,15 +211,23 @@ export function Footer() {
             </h3>
             <ul className="space-y-4">
               <li>
-                <a href="#" className="group flex items-start gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                <a
+                  href="#"
+                  className="group flex items-start gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
                   <div className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
                     <MapPin className="w-5 h-5 text-accent" />
                   </div>
-                  <span className="pt-2">Office#8 Lower ground Square plaza gate no 1 B17 Islamabad</span>
+                  <span className="pt-2">
+                    Office#8 Lower ground Square plaza gate no 1 B17 Islamabad
+                  </span>
                 </a>
               </li>
               <li>
-                <a href="tel:+923059865325" className="group flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                <a
+                  href="tel:+923059865325"
+                  className="group flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
                   <div className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
                     <Phone className="w-5 h-5 text-accent" />
                   </div>
@@ -194,7 +235,10 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="mailto:sunnyvolt17@gmail.com" className="group flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors">
+                <a
+                  href="mailto:sunnyvolt17@gmail.com"
+                  className="group flex items-center gap-3 text-primary-foreground/70 hover:text-primary-foreground transition-colors"
+                >
                   <div className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center flex-shrink-0 group-hover:bg-accent/20 transition-colors">
                     <Mail className="w-5 h-5 text-accent" />
                   </div>
@@ -230,5 +274,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
